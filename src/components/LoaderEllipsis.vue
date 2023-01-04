@@ -4,9 +4,7 @@
 </script>
 
 <template>
-  <div
-    class="absolute inset-0 flex align-middle justify-center bg-neutral-300 bg-opacity-20"
-  >
+  <div class="flex align-middle justify-center">
     <div class="lds-ellipsis">
       <div></div>
       <div></div>

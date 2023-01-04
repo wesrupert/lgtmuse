@@ -1,26 +1,34 @@
 <template>
-  <div class="flex flex-col gap-8 container px-8 py-8 mx-auto">
+  <div
+    class="flex flex-col h-full justify-center gap-8 max-w-prose px-8 py-8 mx-auto text-slate-900 dark:text-slate-100"
+  >
     <header class="flex flex-col">
       <h1 class="text-4xl mb-2">LGTMuse</h1>
-      <h2 class="text-xl text-slate-500 mb">
+      <h2 class="text-xl mb text-slate-500 dark:text-slate-400">
         A muse for what looks good to you
       </h2>
-      <h3 class="text-xl italic text-slate-500">...on a book cover!</h3>
+      <h3 class="text-xl italic text-slate-500 dark:text-slate-400">
+        ...on a book cover!
+      </h3>
     </header>
 
-    <main class="relative rounded-2xl bg-slate-100 p-4">
-      <div class="flex flex-col gap-8">
+    <main
+      class="rounded-2xl p-4 bg-amber-200 dark:bg-yellow-900 dark:text-slate-200 saturate-50"
+    >
+      <div class="flex flex-col gap-4">
         <h2 class="capitalize text-xl">
           <span>{{ title }}</span>
-          <span v-if="subtitle" class="capitalize text-base text-slate-500"
+          <span
+            v-if="subtitle"
+            class="capitalize text-base text-slate-500 dark:text-slate-400"
             >...{{ subtitle }}</span
           >
         </h2>
+        <LoaderEllipsis v-if="loading" />
         <div class="text-base text-justify flex flex-col gap-2">
           <div v-for="line in summary" :key="line">{{ line }}</div>
         </div>
       </div>
-      <LoaderEllipsis v-if="loading" />
     </main>
     <transition
       enter-active-class="duration-300 ease-out"
@@ -35,13 +43,23 @@
         <h2>Coming soon to a bookstore near you!</h2>
         <h2>...Or, maybe not.</h2>
         <button
-          class="mt-4 bg-blue-200 px-4 py-1 rounded-full"
+          class="mt-8 px-4 py-1 rounded-full bg-amber-200 dark:bg-yellow-900 saturate-50"
           @click="loadGoodTitleMetadata"
         >
           Try again?
         </button>
       </div>
     </transition>
+    <div class="text-xs italic text-slate-500 dark:text-slate-400 text-center">
+      Title brought to you by
+      <a href="https://datamuse.com/" target="_blank">Datamuse</a>. Synopsis
+      brought to you by
+      <a href="https://beta.openai.com/" target="_blank">OpenAI</a>. Derived
+      content does not reflect this site's values or those of its author in any
+      way.
+      <br />
+      Happy New Year!
+    </div>
   </div>
 </template>
 
